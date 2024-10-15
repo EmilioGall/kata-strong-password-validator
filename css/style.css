@@ -1,5 +1,22 @@
 body {
 
-   background: linear-gradient(90deg, rgba(37,39,59,1) 0%, rgba(63,77,120,1) 100%);
-  
+  background: linear-gradient(90deg, #093342 0%, #234a58 100%);
+
+}
+
+h1 {
+
+  color: #093342;
+
+}
+
+ul {
+
+  list-style-type: none;
+
+}
+
+.border {
+
+  height: 20px;
 }

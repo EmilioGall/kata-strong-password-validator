@@ -3,52 +3,97 @@
 
 <head>
 
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-   <!-- Link Font-Awesome cdn v6 -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-   <!-- /Link Font-Awesome cdn v6 -->
+  <!-- Link Font-Awesome cdn v6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- /Link Font-Awesome cdn v6 -->
 
-   <!-- Link Bootstrap -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-   <!-- /Link Bootstrap -->
+  <!-- Link Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <!-- /Link Bootstrap -->
 
-   <!-- Link Custom Style -->
-   <link rel="stylesheet" href="./css/style.css">
-   <!-- /Link Custom Style -->
+  <!-- Link Custom Style -->
+  <link rel="stylesheet" href="./css/style.css" />
+  <!-- /Link Custom Style -->
 
-   <title>Strong Password Validator</title>
+  <title>Strong Password Validator</title>
 
 </head>
 
 <body>
+  <main class="container-sm p-5 mx-auto my-5 bg-light rounded">
+    <!-- Title -->
+    <h1 class="fs-1 fw-bold pb-4 text-center">Verify your password</h1>
+    <!-- /Title -->
 
-   <header class="bg-secondary text-white">
+    <div class="row g-3 justify-content-center">
+      <!-- Input Section -->
+      <section class="form-floating col-8">
 
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
 
+        <label class="ms-2 py-2" for="floatingPassword">Password</label>
 
-   </header>
+      </section>
+      <!-- /Input Section -->
 
-   <main>
+      <!-- Requirements Section -->
+      <section class="col-8">
 
+        <ul class="list-container fs-5 ps-2">
 
+          <li class="text-secondary">
+            <i class="fa-regular fa-circle-xmark me-3"></i>Minimum <b>9 characters</b>
+          </li>
 
-   </main>
+          <li class="text-success">
+            <i class="fa-regular fa-circle-check me-3"></i>A <b>capital (uppercase)</b>
+            letter
+          </li>
 
-   <!-- Script Elements -->
-   <script src="./js/elements.js"></script>
-   <!-- /Script Elements -->
+          <li class="text-secondary">
+            <i class="fa-regular fa-circle-xmark me-3"></i>A <b>number</b>
+          </li>
 
-   <!-- Script Functions -->
-   <script src="./js/functions.js"></script>
-   <!-- /Script Functions -->
+          <li class="text-secondary">
+            <i class="fa-regular fa-circle-xmark me-3"></i>A <b>special character</b>
+          </li>
 
-   <!-- Script Custom -->
-   <script src="./js/main.js"></script>
-   <!-- /Script Custom -->
+        </ul>
 
+      </section>
+      <!-- /Requirements Section -->
+
+      <!-- Progress Bar Section -->
+      <section class="col-8">
+
+        <div class="border border-secondary-subtle rounded-pill">
+
+          <div class="h-100 bg-warning rounded-pill p-1 ps-4 text-secondary" style="width:50%"></div>
+
+        </div>
+
+      </section>
+      <!-- /Progress Bar Section -->
+
+    </div>
+
+  </main>
+
+  <!-- Script Elements -->
+  <script src="./js/elements.js"></script>
+  <!-- /Script Elements -->
+
+  <!-- Script Functions -->
+  <script src="./js/functions.js"></script>
+  <!-- /Script Functions -->
+
+  <!-- Script Custom -->
+  <script src="./js/main.js"></script>
+  <!-- /Script Custom -->
 </body>
 
 </html>
