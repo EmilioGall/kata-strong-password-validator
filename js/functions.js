@@ -8,6 +8,9 @@ console.log('///// Functions /////');
  */
 function printListRequest(requestsArray, listContainer) {
 
+   // Clear previous list elements
+   listContainer.innerHTML = '';
+
    requestsArray.forEach((request) => {
 
       if (request.validated == true) {
@@ -21,7 +24,7 @@ function printListRequest(requestsArray, listContainer) {
       } else if (request.validated == false) {
 
          listContainer.innerHTML += `
-            <li class="text-secondary">
+            <li class="text-secondary text-opacity-50">
                <i class="fa-regular fa-circle-xmark me-3"></i>${request.requestText()}
             </li>
          `
