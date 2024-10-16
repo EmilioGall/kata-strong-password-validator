@@ -116,6 +116,41 @@ function countNumbers(str) {
 };
 
 /**
+ * Description: function counts how many special characters there are in a given string.
+ * @param {string} str
+ * @returns {number}
+ */
+function countSpecialChar(str) {
+
+   let count = 0;
+
+   for (let i = 0; i < str.length; i++) {
+
+      // Define constant for the Unicode value of the character at index [i]
+      const charCode = str.charCodeAt(i);
+
+      console.log( `Unicode char ${i+1}:`, charCode);
+
+      if ((charCode >= '32' && charCode <= '47')
+         || (charCode >= '58' && charCode <= '64')
+         || (charCode >= '91' && charCode <= '96')
+         || (charCode >= '123' && charCode <= '126')
+         || (charCode >= '160' && charCode <= '191')) {
+
+         // Increment count if the character is a special character
+         count++;
+
+      };
+
+      
+   };
+   console.log( `Special Count:`, count);
+
+   return count;
+
+};
+
+/**
  * Description: function calls the given function [functionToCall] only after time param [delay].
  * @param {function} functionToCall
  * @param {number} delay
