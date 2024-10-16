@@ -13,15 +13,15 @@ function printListRequest(requestsArray, listContainer) {
 
    requestsArray.forEach((request) => {
 
-      if (request.validated == true) {
+      if (request.status == 'validated') {
 
          listContainer.innerHTML += `
          <li class="text-success">
             <i class="fa-regular fa-circle-check me-3"></i>${request.requestText()}
          </li>
-      `
+         `
 
-      } else if (request.validated == false) {
+      } else if (request.status == 'default') {
 
          listContainer.innerHTML += `
             <li class="text-secondary text-opacity-50">
@@ -29,7 +29,16 @@ function printListRequest(requestsArray, listContainer) {
             </li>
          `
 
-      }
+      } else if (request.status == 'failed') {
+         
+         listContainer.innerHTML += `
+         <li class="text-danger">
+            <i class="fa-regular fa-circle-xmark me-3"></i>${request.requestText()}
+         </li>
+         `
+         request.failed = false;
+
+      };
 
    });
 
