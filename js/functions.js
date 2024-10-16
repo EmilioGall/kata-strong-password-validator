@@ -68,7 +68,7 @@ function countWhitespace(str) {
 };
 
 /**
- * Description:
+ * Description: function counts how many uppercase there are in a given string.
  * @param {string} str
  * @returns {number}
  */
@@ -81,6 +81,30 @@ function countUpperCase(str) {
       if (char >= 'A' && char <= 'Z') {
 
          // Increment count if the character is uppercase
+         count++;
+
+      };
+
+   };
+
+   return count;
+
+};
+
+/**
+ * Description: function counts how many numbers there are in a given string.
+ * @param {string} str
+ * @returns {number}
+ */
+function countNumbers(str) {
+
+   let count = 0;
+
+   for (let char of str) {
+
+      if (char >= '0' && char <= '9') {
+
+         // Increment count if the character is a number
          count++;
 
       };
