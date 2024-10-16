@@ -28,28 +28,36 @@ inputPasswordElem.addEventListener('input', function () {
 
       // Control of Requirement 1
       if (countWhitespace(inputPasswordValue) <= requestsArray[0].requestValue) {
-   
+
          requestsArray[0].status = 'validated';
-   
+
       } else if (countWhitespace(inputPasswordValue) > requestsArray[0].requestValue) {
-   
+
          requestsArray[0].status = 'default';
-   
+
       };
-   
+
       // Control of Requirement 2
       if (inputPasswordValue.length >= requestsArray[1].requestValue) {
-   
-         requestsArray[1].status = 'validated';
-   
-      } else if (inputPasswordValue.length < requestsArray[1].requestValue) {
-   
-         requestsArray[1].status = 'default';
-   
-      };
-   
-      // Control of Requirement 3
 
+         requestsArray[1].status = 'validated';
+
+      } else if (inputPasswordValue.length < requestsArray[1].requestValue) {
+
+         requestsArray[1].status = 'default';
+
+      };
+
+      // Control of Requirement 3
+      if (countUpperCase(inputPasswordValue) >= requestsArray[2].requestValue) {
+
+         requestsArray[2].status = 'validated';
+
+      } else if (countWhitespace(inputPasswordValue) < requestsArray[2].requestValue) {
+
+         requestsArray[2].status = 'default';
+
+      };
 
    };
 
