@@ -12,17 +12,47 @@ inputPasswordElem.addEventListener('input', function () {
    // Define constant of Password Input Value
    const inputPasswordValue = inputPasswordElem.value.trim();
 
-   console.log("inputPasswordValue", typeof inputPasswordValue, inputPasswordValue);
+   console.log("inputPasswordValue:", inputPasswordValue, typeof inputPasswordValue);
 
-   if (inputPasswordValue.length >= requestsArray[0].requestValue) {
+   if (!inputPasswordValue) {
 
-      requestsArray[0].validated = true;
+      console.log('empty');
 
-   } else if (inputPasswordValue.length < requestsArray[0].requestValue) {
+      requestsArray.forEach((request, i) => {
 
-      requestsArray[0].validated = false;
-      
+         request.status = 'default';
+
+      });
+
+   } else {
+
+      // Control of Requirement 1
+      if (countWhitespace(inputPasswordValue) <= requestsArray[0].requestValue) {
+   
+         requestsArray[0].status = 'validated';
+   
+      } else if (countWhitespace(inputPasswordValue) > requestsArray[0].requestValue) {
+   
+         requestsArray[0].status = 'default';
+   
+      };
+   
+      // Control of Requirement 2
+      if (inputPasswordValue.length >= requestsArray[1].requestValue) {
+   
+         requestsArray[1].status = 'validated';
+   
+      } else if (inputPasswordValue.length < requestsArray[1].requestValue) {
+   
+         requestsArray[1].status = 'default';
+   
+      };
+   
+      // Control of Requirement 3
+
+
    };
+
 
    // Print on [requestsListElem] requests in [requestsArray]
    printListRequest(requestsArray, requestsListElem);
