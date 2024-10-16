@@ -4,8 +4,8 @@ console.log('///// Main /////');
 printListRequest(requestsArray, requestsListElem);
 
  
-// Add change event listener on [inputPasswordElem]
-inputPasswordElem.addEventListener('change', function () {
+// Add input event listener on [inputPasswordElem]
+inputPasswordElem.addEventListener('input', function () {
 
    console.log('changed');
 
