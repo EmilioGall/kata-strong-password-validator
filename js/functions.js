@@ -303,6 +303,7 @@ function debounce(functionToCall, delay) {
       // Capture context of function
       const context = this;
 
+      // Set a new timeout to call the function
       timeout = setTimeout(() => {
 
          // Execute the function with the correct context and arguments
