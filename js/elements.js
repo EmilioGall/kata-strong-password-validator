@@ -4,40 +4,53 @@ console.log('///// Elements /////');
 const requestsArray = [
 
    {
+      requestValue: 0,
+      requestText: function () {
+
+         return `Must contain <b>${this.requestValue} white spaces</b>`;
+
+      },
+      status: 'default',
+
+   },
+   {
       requestValue: 9,
       requestText: function () {
 
-         return `Minimum <b>${this.requestValue} characters</b>`;
+         return `At least <b>${this.requestValue} characters</b>`;
 
       },
-      validated: false,
+      status: 'validated',
    },
    {
       requestValue: 1,
       requestText: function () {
 
-         return `At least <b>${this.requestValue} capital (uppercase) letter</b>`;
+         return `Minimum <b>${this.requestValue} capital (uppercase) letter</b>`;
 
       },
-      validated: true,
+      status: 'failed',
+
    },
    {
       requestValue: 1,
       requestText: function () {
 
-         return `</i>Minimum <b>${this.requestValue} number</b>`;
+         return `</i>At least <b>${this.requestValue} number</b>`;
 
       },
-      validated: false,
+      status: 'default',
+
    },
    {
       requestValue: 2,
       requestText: function () {
 
-         return `At least <b>${this.requestValue} special character</b>`;
+         return `Minimum <b>${this.requestValue} special character</b>`;
 
       },
-      validated: false,
+      status: 'default',
+
    },
 
 ];
