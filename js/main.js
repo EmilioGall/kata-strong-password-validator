@@ -11,13 +11,19 @@ inputPasswordElem.addEventListener('input', function () {
 
    // console.log('changed');
 
+   // Clear previous alert message
+   alertContainerElem.innerHTML = '';
+
    // Call controls on password input
    controlPassword('input');
 
 });
 
-// Create a debounced version of the controlPassword function with 700ms delay
-const debouncedControlPassword = debounce( ()=> controlPassword('keypress'), 700);
+// Create a debounced version of the [controlPassword] function with 500ms delay
+const debouncedControlPassword = debounce(() => controlPassword('keypress'), 500);
+
+// Create a debounced version of the [printAlert] function with 500ms delay
+const debouncedPrintAlert = debounce(() => printAlert(requestsArray, alertContainerElem), 500);
 
 // Add keypress event listener on [inputPasswordElem]
 inputPasswordElem.addEventListener('keypress', function (e) {
@@ -32,6 +38,9 @@ inputPasswordElem.addEventListener('keypress', function (e) {
 
       // Call debounced version of controls
       debouncedControlPassword();
+
+      // Call debounced version of alert
+      debouncedPrintAlert();
 
    };
 
