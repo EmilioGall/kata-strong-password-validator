@@ -4,7 +4,6 @@ console.log('///// Functions /////');
  * Description: function prints on DOM element [listContainer] requests from a given array.
  * @param {array} requestsArray
  * @param {obj} listContainer
- * @returns {any}
  */
 function printListRequest(requestsArray, listContainer) {
 
@@ -41,6 +40,61 @@ function printListRequest(requestsArray, listContainer) {
       };
 
    });
+
+};
+
+/**
+ * Description: function prints on DOM element [progressBar] status completion of given array elements.
+ * @param {array} requestsArray
+ * @param {obj} progressBar
+ */
+function printProgressBar(requestsArray, progressBar) {
+
+   // Clear previous list elements
+   progressBar.innerHTML = '';
+
+   let validatedRequests = 0;
+
+   requestsArray.forEach((request) => {
+
+      if (request.status == 'validated') {
+
+         validatedRequests++;
+
+      };
+
+   });
+
+   console.log('validatedRequests:', validatedRequests);
+
+
+   let progressPercentage = (validatedRequests / requestsArray.length) * 100;
+
+   console.log(`Progress: ${progressPercentage}%`);
+
+   let barColor = '';
+
+   if (progressPercentage <= 20) {
+
+      barColor = 'danger';
+      
+   } else if (progressPercentage > 20 && (progressPercentage <= 80)) {
+
+      barColor = 'warning';
+
+   } else if (progressPercentage > 80) {
+
+      barColor = 'success';
+
+   };
+
+   if (progressPercentage > 0) {
+
+      progressBar.innerHTML += `
+      <div class="h-100 bg-${barColor} rounded-pill p-1 ps-4 text-secondary" style="width:${progressPercentage}%"></div>
+      `
+
+   };
 
 };
 
@@ -129,8 +183,6 @@ function countSpecialChar(str) {
       // Define constant for the Unicode value of the character at index [i]
       const charCode = str.charCodeAt(i);
 
-      console.log( `Unicode char ${i+1}:`, charCode);
-
       if ((charCode >= '32' && charCode <= '47')
          || (charCode >= '58' && charCode <= '64')
          || (charCode >= '91' && charCode <= '96')
@@ -142,9 +194,7 @@ function countSpecialChar(str) {
 
       };
 
-      
    };
-   console.log( `Special Count:`, count);
 
    return count;
 
