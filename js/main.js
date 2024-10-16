@@ -71,7 +71,16 @@ inputPasswordElem.addEventListener('input', function () {
       };
 
       // Control of Requirement 5
+      if (countSpecialChar(inputPasswordValue) >= requestsArray[4].requestValue) {
 
+         requestsArray[4].status = 'validated';
+
+      } else if (countSpecialChar(inputPasswordValue) < requestsArray[4].requestValue) {
+
+         requestsArray[4].status = 'default';
+
+      };
+      
    };
 
 
