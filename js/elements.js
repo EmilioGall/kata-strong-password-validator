@@ -67,7 +67,7 @@ const inputPasswordElem = document.querySelector("#input-password");
 
 console.log("inputPasswordElem", typeof inputPasswordElem, inputPasswordElem);
 
-// Define constant of List of Requests Dom Element
+// Define constant of List Container Dom Element
 const requestsListElem = document.querySelector("#requests-list");
 
 console.log("requestsListElem", typeof requestsListElem, requestsListElem);
@@ -76,3 +76,8 @@ console.log("requestsListElem", typeof requestsListElem, requestsListElem);
 const progressBarElem = document.querySelector("#progress-bar");
 
 console.log("progressBarElem", typeof progressBarElem, progressBarElem);
+
+// Define constant of Alert Container Dom Element
+const alertContainerElem = document.querySelector("#alert-container");
+
+console.log("alertContainerElem", typeof alertContainerElem, alertContainerElem);
