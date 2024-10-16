@@ -57,6 +57,7 @@ function countWhitespace(str) {
 
       if (char.trim() === '') {
 
+         // Increment count if the character is whitespace
          count++;
 
       };
@@ -64,7 +65,31 @@ function countWhitespace(str) {
    };
 
    return count;
-}
+};
+
+/**
+ * Description:
+ * @param {string} str
+ * @returns {number}
+ */
+function countUpperCase(str) {
+
+   let count = 0;
+
+   for (let char of str) {
+
+      if (char >= 'A' && char <= 'Z') {
+
+         // Increment count if the character is uppercase
+         count++;
+
+      };
+
+   };
+
+   return count;
+
+};
 
 /**
  * Description: function calls the given function [functionToCall] only after time param [delay].
