@@ -10,6 +10,7 @@ const requestsArray = [
          return `Minimum <b>${this.requestValue} characters</b>`;
 
       },
+      validated: false,
    },
    {
       requestValue: 1,
@@ -18,6 +19,7 @@ const requestsArray = [
          return `At least <b>${this.requestValue} capital (uppercase) letter</b>`;
 
       },
+      validated: true,
    },
    {
       requestValue: 1,
@@ -26,6 +28,7 @@ const requestsArray = [
          return `</i>Minimum <b>${this.requestValue} number</b>`;
 
       },
+      validated: false,
    },
    {
       requestValue: 2,
@@ -34,6 +37,7 @@ const requestsArray = [
          return `At least <b>${this.requestValue} special character</b>`;
 
       },
+      validated: false,
    },
 
 ];
