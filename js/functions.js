@@ -15,9 +15,9 @@ function printListRequest(requestsArray, listContainer) {
       if (request.status == 'validated') {
 
          listContainer.innerHTML += `
-         <li class="text-success">
-            <i class="fa-regular fa-circle-check me-3"></i>${request.requestText()}
-         </li>
+            <li class="text-success">
+               <i class="fa-regular fa-circle-check me-3"></i>${request.requestText()}
+            </li>
          `
 
       } else if (request.status == 'default') {
@@ -31,9 +31,9 @@ function printListRequest(requestsArray, listContainer) {
       } else if (request.status == 'failed') {
 
          listContainer.innerHTML += `
-         <li class="text-danger">
-            <i class="fa-regular fa-circle-xmark me-3"></i>${request.requestText()}
-         </li>
+            <li class="text-danger">
+               <i class="fa-regular fa-circle-xmark me-3"></i>${request.requestText()}
+            </li>
          `
          request.failed = false;
 
@@ -67,7 +67,6 @@ function printProgressBar(requestsArray, progressBar) {
 
    console.log('validatedRequests:', validatedRequests);
 
-
    let progressPercentage = (validatedRequests / requestsArray.length) * 100;
 
    console.log(`Progress: ${progressPercentage}%`);
@@ -93,6 +92,48 @@ function printProgressBar(requestsArray, progressBar) {
       progressBar.innerHTML += `
       <div class="h-100 bg-${barColor} rounded-pill p-1 ps-4 text-secondary" style="width:${progressPercentage}%"></div>
       `
+
+   };
+
+};
+
+/**
+ * Description: function prints on DOM element [alertContainer] alert accordly to requests status completion.
+ * @param {array} requestsArray
+ * @param {obj} progressBar
+ */
+function printAlert(requestsArray, alertContainer) {
+
+   // Clear previous alert message
+   alertContainer.innerHTML = '';
+
+   let validatedRequests = 0;
+
+   requestsArray.forEach((request) => {
+
+      if (request.status == 'validated') {
+
+         validatedRequests++;
+
+      };
+
+   });
+
+   if (validatedRequests == requestsArray.length) {
+
+      alertContainer.innerHTML = `
+         <div class="alert alert-success" role="alert">
+            Password insert correctly. <b>All requirements met!</b>
+         </div>
+      `;
+
+   } else {
+
+      alertContainer.innerHTML = `
+         <div class="alert alert-danger" role="alert">
+            Password not strong enough. <b>Requirements not met!</b>
+         </div>
+      `;
 
    };
 
@@ -200,6 +241,10 @@ function countSpecialChar(str) {
 
 };
 
+/**
+ * Description: function controls if the input password respect requirements and prints requirements and progress bar accordly to listener type.
+ * @param {string} listenerType
+ */
 function controlPassword(listenerType) {
 
    // Define constant of Password Input Value
@@ -220,11 +265,11 @@ function controlPassword(listenerType) {
    } else {
 
       // Control of Requirement 1
-      if (countWhitespace(inputPasswordValue) <= requestsArray[0].requestValue) {
+      if (countWhitespace(inputPasswordValue) == requestsArray[0].requestValue) {
 
          requestsArray[0].status = 'validated';
 
-      } else if (countWhitespace(inputPasswordValue) > requestsArray[0].requestValue) {
+      } else if (countWhitespace(inputPasswordValue) != requestsArray[0].requestValue) {
 
          requestsArray[0].status = listenerType == 'input' ? 'default' : 'failed';
 
