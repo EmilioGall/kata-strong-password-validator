@@ -53,11 +53,24 @@ inputPasswordElem.addEventListener('input', function () {
 
          requestsArray[2].status = 'validated';
 
-      } else if (countWhitespace(inputPasswordValue) < requestsArray[2].requestValue) {
+      } else if (countUpperCase(inputPasswordValue) < requestsArray[2].requestValue) {
 
          requestsArray[2].status = 'default';
 
       };
+
+      // Control of Requirement 4
+      if (countNumbers(inputPasswordValue) >= requestsArray[3].requestValue) {
+
+         requestsArray[3].status = 'validated';
+
+      } else if (countNumbers(inputPasswordValue) < requestsArray[3].requestValue) {
+
+         requestsArray[3].status = 'default';
+
+      };
+
+      // Control of Requirement 5
 
    };
 
