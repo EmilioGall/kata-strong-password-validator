@@ -10,11 +10,23 @@ function printListRequest(requestsArray, listContainer) {
 
    requestsArray.forEach((request) => {
 
-      listContainer.innerHTML += `
-         <li class="text-secondary">
-            <i class="fa-regular fa-circle-xmark me-3"></i>${request.requestText()}
+      if (request.validated == true) {
+
+         listContainer.innerHTML += `
+         <li class="text-success">
+            <i class="fa-regular fa-circle-check me-3"></i>${request.requestText()}
          </li>
       `
+
+      } else if (request.validated == false) {
+
+         listContainer.innerHTML += `
+            <li class="text-secondary">
+               <i class="fa-regular fa-circle-xmark me-3"></i>${request.requestText()}
+            </li>
+         `
+
+      }
 
    });
 
