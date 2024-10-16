@@ -3,11 +3,13 @@ console.log('///// Main /////');
 // Print on [requestsListElem] requests in [requestsArray]
 printListRequest(requestsArray, requestsListElem);
 
+// Print on [progressBarElem] requests status completion
+printProgressBar(requestsArray, progressBarElem);
 
 // Add input event listener on [inputPasswordElem]
 inputPasswordElem.addEventListener('input', function () {
 
-   console.log('changed');
+   // console.log('changed');
 
    // Define constant of Password Input Value
    const inputPasswordValue = inputPasswordElem.value.trim();
@@ -80,11 +82,13 @@ inputPasswordElem.addEventListener('input', function () {
          requestsArray[4].status = 'default';
 
       };
-      
-   };
 
+   };
 
    // Print on [requestsListElem] requests in [requestsArray]
    printListRequest(requestsArray, requestsListElem);
+
+   // Print on [progressBarElem] requests status completion
+   printProgressBar(requestsArray, progressBarElem);
 
 });
