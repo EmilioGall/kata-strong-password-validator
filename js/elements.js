@@ -20,7 +20,7 @@ const requestsArray = [
          return `At least <b>${this.requestValue} characters</b>`;
 
       },
-      status: 'validated',
+      status: 'default',
    },
    {
       requestValue: 1,
@@ -29,7 +29,7 @@ const requestsArray = [
          return `Minimum <b>${this.requestValue} capital (uppercase) letter</b>`;
 
       },
-      status: 'failed',
+      status: 'default',
 
    },
    {

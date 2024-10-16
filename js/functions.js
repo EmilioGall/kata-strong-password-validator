@@ -1,7 +1,7 @@
 console.log('///// Functions /////');
 
 /**
- * Description: function prints on [listContainer] requests in [requestsArray]
+ * Description: function prints on DOM element [listContainer] requests from a given array.
  * @param {array} requestsArray
  * @param {obj} listContainer
  * @returns {any}
@@ -30,7 +30,7 @@ function printListRequest(requestsArray, listContainer) {
          `
 
       } else if (request.status == 'failed') {
-         
+
          listContainer.innerHTML += `
          <li class="text-danger">
             <i class="fa-regular fa-circle-xmark me-3"></i>${request.requestText()}
@@ -43,6 +43,28 @@ function printListRequest(requestsArray, listContainer) {
    });
 
 };
+
+/**
+ * Description: function counts how many whitespace there are in a given string.
+ * @param {string} str
+ * @returns {number} count
+ */
+function countWhitespace(str) {
+
+   let count = 0;
+
+   for (let char of str) {
+
+      if (char.trim() === '') {
+
+         count++;
+
+      };
+
+   };
+
+   return count;
+}
 
 /**
  * Description: function calls the given function [functionToCall] only after time param [delay].
