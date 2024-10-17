@@ -1,6 +1,37 @@
 console.log('///// Functions /////');
 
 /**
+ * Description: function calls the given function [functionToCall] only after time param [delay].
+ * @param {function} functionToCall
+ * @param {number} delay
+ * @returns {function} 
+ */
+function debounce(functionToCall, delay) {
+
+   // Define variable for timeout
+   let timeout;
+
+   return function (...args) { // capture arguments passed to the debounced function
+
+      // Clear the previous timer
+      clearTimeout(timeout);
+
+      // Capture context of function
+      const context = this;
+
+      // Set a new timeout to call the function
+      timeout = setTimeout(() => {
+
+         // Execute the function with the correct context and arguments
+         functionToCall.apply(context, args);
+
+      }, delay);
+
+   };
+
+};
+
+/**
  * Description: function prints on DOM element [listContainer] requests from a given array.
  * @param {array} requestsArray
  * @param {obj} listContainer
@@ -44,14 +75,11 @@ function printListRequest(requestsArray, listContainer) {
 };
 
 /**
- * Description: function prints on DOM element [progressBar] status completion of given array elements.
+ * Description: function counts how many validated requests there are in the given array.
  * @param {array} requestsArray
- * @param {obj} progressBar
+ * @returns {number}
  */
-function printProgressBar(requestsArray, progressBar) {
-
-   // Clear previous list elements
-   progressBar.innerHTML = '';
+function countValidated(requestsArray) {
 
    let validatedRequests = 0;
 
@@ -67,31 +95,141 @@ function printProgressBar(requestsArray, progressBar) {
 
    console.log('validatedRequests:', validatedRequests);
 
+   return validatedRequests;
+
+};
+
+/**
+ * Description: function prints on DOM element [progressBar] status completion of given array elements.
+ * @param {array} requestsArray
+ * @param {obj} progressBar
+ */
+function printProgressBar(requestsArray, progressBar) {
+
+   const validatedRequests = countValidated(requestsArray);
+
    let progressPercentage = (validatedRequests / requestsArray.length) * 100;
 
    console.log(`Progress: ${progressPercentage}%`);
 
-   let barColor = '';
+   // Parse existing width
+   let barWidth = parseFloat(progressElem.style.width) || 0;
 
-   if (progressPercentage <= 20) {
-
-      barColor = 'danger';
-
-   } else if (progressPercentage > 20 && (progressPercentage <= 80)) {
-
-      barColor = 'warning';
-
-   } else if (progressPercentage > 80) {
-
-      barColor = 'success';
-
+   // Clear any existing interval before starting a new one
+   if (progressInterval) {
+      clearInterval(progressInterval);
    };
 
-   if (progressPercentage > 0) {
+   if (progressPercentage > 0 && progressPercentage <= 100) {
 
-      progressBar.innerHTML += `
-      <div class="h-100 bg-${barColor} rounded-pill p-1 ps-4 text-secondary" style="width:${progressPercentage}%"></div>
-      `
+      // Remove invisible class from [progressElem]
+      progressElem.classList.remove("invisible");
+
+      // Add visible class to [progressElem]
+      progressElem.classList.add("visible");
+
+      if (progressPercentage <= 20) {
+
+         // Remove bg-warning class from [progressElem]
+         progressElem.classList.remove("bg-warning");
+
+         // Remove bg-success class from [progressElem]
+         progressElem.classList.remove("bg-success");
+
+         // Add bg-danger class to [progressElem]
+         progressElem.classList.add("bg-danger");
+
+      } else if (progressPercentage > 20 && (progressPercentage <= 99)) {
+
+         // Add bg-warning class to [progressElem]
+         progressElem.classList.add("bg-warning");
+
+         // Remove bg-success class from [progressElem]
+         progressElem.classList.remove("bg-success");
+
+         // Remove bg-danger class from [progressElem]
+         progressElem.classList.remove("bg-danger");
+
+      } else if (progressPercentage == 100) {
+
+         // Remove bg-warning class from [progressElem]
+         progressElem.classList.remove("bg-warning");
+
+         // Add bg-success class to [progressElem]
+         progressElem.classList.add("bg-success");
+
+         // Remove bg-danger class from [progressElem]
+         progressElem.classList.remove("bg-danger");
+
+      };
+
+      progressInterval = setInterval(moveBar, 5);
+
+      function moveBar() {
+
+         if (barWidth < progressPercentage) {
+
+            barWidth++;
+
+         } else if (barWidth > progressPercentage) {
+
+            barWidth--;
+
+         } else if (barWidth == progressPercentage) {
+
+            // Stop when the bar reaches the target
+            clearInterval(progressInterval);
+
+         };
+
+         progressElem.style.width = barWidth + '%';
+
+         console.log('progressElem.style.width:', progressElem.style.width);
+
+      };
+
+      let progressWidth = progressElem.style.width;
+
+      console.log('progressWidth:', progressWidth);
+
+   } else if (progressPercentage == 0) {
+
+      progressInterval = setInterval(moveBar, 30);
+
+      function moveBar() {
+
+         if (barWidth < progressPercentage) {
+
+            barWidth++;
+
+         } else if (barWidth > progressPercentage) {
+
+            barWidth--;
+
+         } else if (barWidth == progressPercentage) {
+
+            // Stop when the bar reaches the target
+            clearInterval(progressInterval);
+
+            // // Remove visible class from [progressElem]
+            progressElem.classList.remove("visible");
+      
+            // // Add invisible class to [progressElem]
+            progressElem.classList.add("invisible");
+
+         };
+
+         progressElem.style.width = barWidth + '%';
+
+         console.log('progressElem.style.width:', progressElem.style.width);
+
+         
+      };
+
+      
+      let progressWidth = progressElem.style.width;
+
+      console.log('progressWidth:', progressWidth);
 
    };
 
@@ -107,17 +245,7 @@ function printAlert(requestsArray, alertContainer) {
    // Clear previous alert message
    alertContainer.innerHTML = '';
 
-   let validatedRequests = 0;
-
-   requestsArray.forEach((request) => {
-
-      if (request.status == 'validated') {
-
-         validatedRequests++;
-
-      };
-
-   });
+   const validatedRequests = countValidated(requestsArray);
 
    if (validatedRequests == requestsArray.length) {
 
@@ -250,13 +378,14 @@ function controlPassword(listenerType) {
    // Define constant of Password Input Value
    const inputPasswordValue = inputPasswordElem.value.trim();
 
-   console.log("inputPasswordValue:", inputPasswordValue, typeof inputPasswordValue);
+   console.log("%c inputPasswordValue:", 'color:green', inputPasswordValue, typeof inputPasswordValue);
 
    if (!inputPasswordValue) {
 
       console.log('empty');
 
-      requestsArray.forEach((request, i) => {
+      // Set status of each request
+      requestsArray.forEach((request) => {
 
          request.status = listenerType == 'input' ? 'default' : 'failed';
 
@@ -326,36 +455,5 @@ function controlPassword(listenerType) {
 
    // Print on [progressBarElem] requests status completion
    printProgressBar(requestsArray, progressBarElem);
-
-};
-
-/**
- * Description: function calls the given function [functionToCall] only after time param [delay].
- * @param {function} functionToCall
- * @param {number} delay
- * @returns {function} 
- */
-function debounce(functionToCall, delay) {
-
-   // Define variable for timeout
-   let timeout;
-
-   return function (...args) { // capture arguments passed to the debounced function
-
-      // Clear the previous timer
-      clearTimeout(timeout);
-
-      // Capture context of function
-      const context = this;
-
-      // Set a new timeout to call the function
-      timeout = setTimeout(() => {
-
-         // Execute the function with the correct context and arguments
-         functionToCall.apply(context, args);
-
-      }, delay);
-
-   };
 
 };

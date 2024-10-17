@@ -19,4 +19,11 @@ ul {
 .border {
 
   height: 20px;
+
+}
+
+#progress {
+
+  transition: width 0.3s linear;
+
 }

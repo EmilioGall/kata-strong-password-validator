@@ -77,6 +77,14 @@ const progressBarElem = document.querySelector("#progress-bar");
 
 console.log("progressBarElem", typeof progressBarElem, progressBarElem);
 
+// Define constant of Requests Progress Dom Element
+const progressElem = document.querySelector('#progress');
+
+console.log('progressElem:', progressElem);
+
+// Define variable for progress interval
+let progressInterval;
+
 // Define constant of Alert Container Dom Element
 const alertContainerElem = document.querySelector("#alert-container");
 
