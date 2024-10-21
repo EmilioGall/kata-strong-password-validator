@@ -31,10 +31,7 @@ inputPasswordElem.addEventListener('keypress', function (e) {
    // If the user presses the "Enter" key on the keyboard
    if (e.key === "Enter") {
 
-      console.log('clicked');
-
-      // Cancel the default action, if needed
-      e.preventDefault();
+      console.log('Enter clicked');
 
       // Call debounced version of controls
       debouncedControlPassword();

@@ -163,7 +163,7 @@ function printProgressBar(requestsArray, progressBar) {
 
       };
 
-      progressInterval = setInterval(moveBar, 5);
+      progressInterval = setInterval(moveBar, 10);
 
       function moveBar() {
 
@@ -184,13 +184,13 @@ function printProgressBar(requestsArray, progressBar) {
 
          progressElem.style.width = barWidth + '%';
 
-         console.log('progressElem.style.width:', progressElem.style.width);
+         // console.log('progressElem.style.width:', progressElem.style.width);
 
       };
 
-      let progressWidth = progressElem.style.width;
+      // let progressWidth = progressElem.style.width;
 
-      console.log('progressWidth:', progressWidth);
+      // console.log('progressWidth:', progressWidth);
 
    } else if (progressPercentage == 0) {
 
@@ -213,7 +213,7 @@ function printProgressBar(requestsArray, progressBar) {
 
             // // Remove visible class from [progressElem]
             progressElem.classList.remove("visible");
-      
+
             // // Add invisible class to [progressElem]
             progressElem.classList.add("invisible");
 
@@ -221,12 +221,12 @@ function printProgressBar(requestsArray, progressBar) {
 
          progressElem.style.width = barWidth + '%';
 
-         console.log('progressElem.style.width:', progressElem.style.width);
+         // console.log('progressElem.style.width:', progressElem.style.width);
 
-         
+
       };
 
-      
+
       let progressWidth = progressElem.style.width;
 
       console.log('progressWidth:', progressWidth);
@@ -301,6 +301,7 @@ function countUpperCase(str) {
 
    for (let char of str) {
 
+      // If character Unicode is in the Capital characters group
       if (char >= 'A' && char <= 'Z') {
 
          // Increment count if the character is uppercase
@@ -325,6 +326,7 @@ function countNumbers(str) {
 
    for (let char of str) {
 
+      // If character Unicode is in the number group
       if (char >= '0' && char <= '9') {
 
          // Increment count if the character is a number
@@ -352,6 +354,7 @@ function countSpecialChar(str) {
       // Define constant for the Unicode value of the character at index [i]
       const charCode = str.charCodeAt(i);
 
+      // If character Unicode is in a special character group
       if ((charCode >= '32' && charCode <= '47')
          || (charCode >= '58' && charCode <= '64')
          || (charCode >= '91' && charCode <= '96')

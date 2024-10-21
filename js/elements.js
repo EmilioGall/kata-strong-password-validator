@@ -4,7 +4,7 @@ console.log('///// Elements /////');
 const requestsArray = [
 
    {
-      requestValue: 0,
+      requestValue: 2,
       requestText: function () {
 
          return `Must contain <b>${this.requestValue} white spaces</b>`;
@@ -21,6 +21,7 @@ const requestsArray = [
 
       },
       status: 'default',
+      
    },
    {
       requestValue: 1,
@@ -36,7 +37,7 @@ const requestsArray = [
       requestValue: 1,
       requestText: function () {
 
-         return `</i>At least <b>${this.requestValue} number</b>`;
+         return `At least <b>${this.requestValue} number</b>`;
 
       },
       status: 'default',
