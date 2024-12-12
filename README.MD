@@ -1,5 +1,3 @@
-Here is the README.md file for the "kata-strong-password-validator" project:
-
 # Kata Strong Password Validator
 
 A JavaScript-based application that provides an interactive password validation interface, ensuring that passwords meet specific security requirements. This app uses dynamic feedback to guide users as they create a password that is both secure and compliant with set rules.
